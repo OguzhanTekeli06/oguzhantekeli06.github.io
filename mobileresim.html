@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nurefşan'a Özel</title>
+    <style>
+        body {
+            background-color: #ffe6f2;
+            margin: 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .heart,
+        .rose-scatter {
+            position: absolute;
+            font-size: 20px;
+            pointer-events: none;
+            animation: floatUp 2s linear infinite;
+        }
+
+        .heart {
+            color: red;
+        }
+
+        .rose-scatter {
+            color: pink;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+        }
+
+        .letter {
+            width: 300px;
+            height: 200px;
+            background: url('2218521.png') no-repeat center center;
+            background-size: contain;
+            /* Görseli div içine tam sığdırır */
+            border: 5px solid pink;
+            border-radius: 10px;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+            z-index: 10;
+            color: #000000;
+            padding-top: 0px;
+            align-items: flex-start;
+        }
+
+        .letter:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .message {
+            display: none;
+            position: absolute;
+            top: 65%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            font-weight: bold;
+            color: #d63384;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="letter" onclick="showEffect()">Nurefşan'a Mektup</div>
+    <div class="message" id="message">Dünyanın En Güzel Kızı Nurefşan İyi Ki Varsın Efenim</div>
+
+    <script>
+        document.addEventListener("mousemove", function (event) {
+            createHeart(event.clientX, event.clientY);
+        });
+
+        document.addEventListener("touchmove", function (event) {
+            let touch = event.touches[0];
+            createHeart(touch.clientX, touch.clientY);
+        });
+
+        function createHeart(x, y) {
+            let heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = x + "px";
+            heart.style.top = y + "px";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 2000);
+        }
+
+        function showEffect() {
+            document.getElementById("message").style.display = "block";
+            for (let i = 0; i < 50; i++) {  // Güllerin sayısını artırdık
+                let rose = document.createElement("div");
+                rose.classList.add("rose-scatter");
+                rose.innerHTML = "🌹";
+                // Gülleri ekranın her noktasında rastgele konumlandır
+                rose.style.left = Math.random() * window.innerWidth + "px";  // Ekranın her yerinde
+                rose.style.top = Math.random() * window.innerHeight + "px";  // Ekranın her yerinde
+                document.body.appendChild(rose);
+                setTimeout(() => rose.remove(), 2000);
+            }
+        }
+    </script>
+</body>
+
+</html>
