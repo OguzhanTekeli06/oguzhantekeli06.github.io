@@ -31,7 +31,7 @@ app.post('/chat', async (req, res) => {
                 'Authorization': `Bearer ${API_KEY}`,
                 'Content-Type': 'application/json',
                 'HTTP-Referer': 'https://oguzhantekeli06.github.io', // Buraya senin frontend adresin
-                'X-Title': 'Sevgiliye Söz Uygulaması'
+                'X-Title': 'SevgiliyeSozApp'
             }
         });
         // OpenRouter'dan gelen cevap
