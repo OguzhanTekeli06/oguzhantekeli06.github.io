@@ -22,18 +22,18 @@ app.post('/chat', async (req, res) => {
     const { prompt } = req.body;
 
     try {
-        // API'ye doğru parametrelerle istek gönderme
         const response = await axios.post(OPENROUTER_API_URL, {
-            model: 'gpt-3.5-turbo', // Burada kullanılan model adı doğru olmalı
-            prompt: prompt, 
+            model: 'openai/gpt-3.5-turbo',
+            messages: [{ role: 'user', content: prompt }],
             temperature: 0.8
         }, {
             headers: {
-                'Authorization': `Bearer ${API_KEY}`,  // API Key doğru olmalı
-                'Content-Type': 'application/json'
+                'Authorization': `Bearer ${API_KEY}`,
+                'Content-Type': 'application/json',
+                'HTTP-Referer': 'https://oguzhantekeli06.github.io', // Buraya senin frontend adresin
+                'X-Title': 'Sevgiliye Söz Uygulaması'
             }
         });
-
         // OpenRouter'dan gelen cevap
         const responseMessage = response.data.choices[0].text; // 'message' yerine 'text'
         res.json({ message: responseMessage });
