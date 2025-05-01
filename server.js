@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname)); 
 // OpenRouter API key
 const API_KEY = process.env.OPENROUTER_API_KEY; // Buraya OpenRouter API key'inizi yapıştırın
-
+console.log("API Key from env:", process.env.OPENROUTER_API_KEY);
 // OpenRouter API URL
 const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/completions'; // API URL'sini doğru girin
 
