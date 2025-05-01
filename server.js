@@ -25,7 +25,7 @@ app.post('/chat', async (req, res) => {
     try {
         const response = await axios.post(OPENROUTER_API_URL, {
             model: 'openai/gpt-3.5-turbo',
-            messages: [{ role: 'user', content: prompt }],
+            prompt: prompt, 
             temperature: 0.8
         }, {
             headers: {
