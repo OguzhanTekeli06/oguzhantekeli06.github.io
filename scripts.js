@@ -37,7 +37,7 @@ function showEffect() {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ prompt: 'Sevgilime güzel sözler söyle' })  // Burada istediğin prompt'u verebilirsin
+        body: JSON.stringify({ prompt: 'Sevgilime güzel bir söz söyle' })  // Burada istediğin prompt'u verebilirsin
     })
     .then(response => response.json())
     .then(data => {

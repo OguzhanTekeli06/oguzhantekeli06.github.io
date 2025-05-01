@@ -10,7 +10,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // OpenRouter API key
-const API_KEY = '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'; // Buraya OpenRouter API key'inizi yapıştırın
+const API_KEY = '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'; // Buraya OpenRouter API key'inizi yapıştırın
 
 // OpenRouter API URL
 const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/completions'; // API URL'sini doğru girin
@@ -22,9 +22,7 @@ app.post('/chat', async (req, res) => {
         // API'ye doğru parametrelerle istek gönderme
         const response = await axios.post(OPENROUTER_API_URL, {
             model: 'gpt-3.5-turbo', // Burada kullanılan model adı doğru olmalı
-            messages: [
-                { role: 'user', content: prompt }
-            ],
+            prompt: prompt, 
             temperature: 0.8
         }, {
             headers: {
@@ -34,10 +32,10 @@ app.post('/chat', async (req, res) => {
         });
 
         // OpenRouter'dan gelen cevap
-        const responseMessage = response.data.choices[0].message.content;
+        const responseMessage = response.data.choices[0].text; // 'message' yerine 'text'
         res.json({ message: responseMessage });
     } catch (error) {
-        console.error("API Hatası:", error.message);
+        console.error("API Hatası:", error.response ? error.response.data : error.message);
         res.status(500).json({ error: 'OpenRouter isteği başarısız' });
     }
 });
