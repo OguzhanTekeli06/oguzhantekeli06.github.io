@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const axios = require('axios'); // Axios'u yükleyeceğiz
+require('dotenv').config();
 
 const app = express();
 const port = 3000;
@@ -10,7 +11,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // OpenRouter API key
-const API_KEY = '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'; // Buraya OpenRouter API key'inizi yapıştırın
+const API_KEY = process.env.OPENROUTER_API_KEY; // Buraya OpenRouter API key'inizi yapıştırın
 
 // OpenRouter API URL
 const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/completions'; // API URL'sini doğru girin
