@@ -32,7 +32,7 @@ function showEffect() {
     }
 
     // OpenRouter API'ye istek gönderme
-    fetch('https://oguzhantekeli06-github-io.onrender.com/chat', {
+    fetch('http://localhost:3000/chat', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
