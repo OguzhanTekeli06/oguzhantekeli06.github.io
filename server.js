@@ -29,7 +29,7 @@ app.post('/chat', async (req, res) => {
             temperature: 0.8
         }, {
             headers: {
-                'Authorization': `Bearer ${API_KEY}`,
+                'Authorization': `Bearer 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`,
                 'Content-Type': 'application/json',
                 'HTTP-Referer': 'https://oguzhantekeli06.github.io', // Buraya senin frontend adresin
                 'X-Title': 'SevgiliyeSozApp'
