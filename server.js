@@ -3,12 +3,14 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const axios = require('axios'); // Axios'u yükleyeceğiz
 require('dotenv').config();
+const path = require('path'); // Statik dosya sunmak için
 
 const app = express();
 const port = 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
 // OpenRouter API key
 const API_KEY = process.env.OPENROUTER_API_KEY; // Buraya OpenRouter API key'inizi yapıştırın
